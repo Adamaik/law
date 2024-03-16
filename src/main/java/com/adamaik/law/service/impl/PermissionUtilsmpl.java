@@ -1,29 +1,22 @@
 package com.adamaik.law.service.impl;
 
 import com.adamaik.law.mapper.UserMapper;
-import com.adamaik.law.pojo.User;
-import com.adamaik.law.service.UserService;
+import com.adamaik.law.service.PermissionUtils;
 import com.adamaik.law.utils.JwtUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- *  @author Adamaik
+ * @author Adamaik
  */
-@Service
 @Slf4j
-public class UserServicempl implements UserService {
+@Service
+public class PermissionUtilsmpl implements PermissionUtils {
     @Autowired
     private UserMapper userMapper;
-
     @Override
-    public User login(User user) {
-        return userMapper.getByUsernameAndPassword(user);
-    }
-
-    @Override
-    public User getAccoutMessage(String token) {
+    public String getPermission(String token) {
         Integer id;
         try{
             id = JwtUtils.parseJWT(token).get("id",Integer.class);
@@ -32,9 +25,6 @@ public class UserServicempl implements UserService {
             log.info("令牌id信息缺失");
             throw e;
         }
-        User user = userMapper.getById(id);
-        user.setPassword("");
-        user.setId(null);
-        return user;
+        return userMapper.getById(id).getPermission();
     }
 }

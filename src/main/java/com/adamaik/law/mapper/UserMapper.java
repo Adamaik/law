@@ -15,4 +15,7 @@ public interface UserMapper {
      */
     @Select("select * from law.employee where account=#{account} and password=#{password}")
     User getByUsernameAndPassword(User user);
+
+    @Select("select * from law.employee where id=#{id}")
+    User getById(Integer id);
 }

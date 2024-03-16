@@ -7,4 +7,5 @@ import com.adamaik.law.pojo.User;
  */
 public interface UserService {
     User login(User input);
+    User getAccoutMessage(String token);
 }
