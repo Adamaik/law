@@ -1,6 +1,8 @@
 package com.adamaik.law.service;
 
 
+import com.adamaik.law.pojo.User;
+
 public interface PermissionUtils {
-    String getPermission(String token);
+    User getPermission(String token);
 }

@@ -11,7 +11,7 @@ import org.apache.ibatis.annotations.Select;
 @Mapper
 public interface UserMapper {
     /**
-     * 根据id，密码查询
+     * 根据账户，密码查询
      */
     @Select("select * from law.employee where account=#{account} and password=#{password}")
     User getByUsernameAndPassword(User user);

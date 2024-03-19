@@ -15,5 +15,5 @@ public class User {
     private String account;
     private String name;
     private String password;
-    private String permission;
+    private Integer permission;
 }

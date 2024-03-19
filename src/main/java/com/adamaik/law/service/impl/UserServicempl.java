@@ -30,6 +30,7 @@ public class UserServicempl implements UserService {
         }
         catch (Exception e){
             log.info("令牌id信息缺失");
+            log.info(token);
             throw e;
         }
         User user = userMapper.getById(id);
